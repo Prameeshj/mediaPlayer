@@ -434,6 +434,7 @@
                     3. Send request
             - API Call using fetch API
                 - fetch() function returns a Promise, then resolved response will get from 'then method' and reject response get from 'catch method' of promise
+            - API Call using Axios Library : Axios is a promise-based HTTP Client for node.js and the browser
         16. JavaScript Modules  : used to transfer data from one js file to another
                 - use import / export statements
                     - export statements : used to share data from one js  file to another, can used in 2 types
@@ -559,9 +560,26 @@
                 2. Inorder to set up path for component, make sure each component must be inside 'Routes' Compoenet of react-router-dom Library, provide this step inside App.jsx file
                 3. To set up path for component, use 'Route' component of react-router-dom Library. Route Compoenet has attributes like 'path' and 'element' inorder setup route for component. All Route component must be inside Routes component
         16. Higher Order Compoenets (HOC) : are component whose props argument will give another Compoenet, ex: Route component
+        17. API CAll in react :
+            - Using Axios Library : install axios - npm i axios
+            - To make http request using axios : axios(config) method
+                - config : is an predfined object with keys (method,url,data,headers)
+            - Http response using axios will always return object with predefind keys (data(server response),status )
+            - Create services folder inside src of your react app
+        18. Data shairing between components in react
+            - State Lifting : data shairing is using props. We will create a state in common parent of data to be shared Compoenets. share state updation function one component and state to another component. 
 
 
 
+        ------------------------------------------------------------------
+                        JSON SERVER CREATION
+        ------------------------------------------------------------------
+
+        1. Create a server folder to store json file
+        2. Create a package.json (npm configuaration file) file inside server folder : use command - npm init -y
+        3. Install json-server package in server folder to run json file , use command to install json-server: npm i json-server
+        4. Create json (db.json) file for storing project data. 
+        5. To run json file and available in browser port use command in server folder : npx json-server db.json
 
 
 
