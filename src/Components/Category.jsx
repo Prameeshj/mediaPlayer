@@ -5,7 +5,7 @@ import { deleteCategoryAPI } from '../services/allAPI';
 import VideoCard from './VideoCard';
 
 
-const Category = ({ setdeleteResponseFromCategory }) => {
+const Category = ({setdeleteResponseFromCategory,deleteResponseFromView}) => {
   const [allCategories, setallCategories] = useState([])
   const [CategoryName, setCategoryName] = useState("")
 
@@ -47,7 +47,7 @@ const Category = ({ setdeleteResponseFromCategory }) => {
 
   useEffect(() => {
     getallCategories()
-  }, [])
+  },[deleteResponseFromView])
 
 
   const deleteCategory = async (id) => {
@@ -78,12 +78,23 @@ const Category = ({ setdeleteResponseFromCategory }) => {
   }
 
 
+  const CategoryVideoDragStarted =(e,dragVideoDetails,categoryDetails)=>{
+    console.log("inside CategoryVideoDragStarted");
+    let dragData = {videos:dragVideoDetails,categoryDetails}
+    e.dataTransfer.setData("dragData",JSON.stringify(dragData))
+  }
+
   return (
     <>
       <div className='d-flex justify-content-around align-items-center'>
         <h3>All Categories</h3>
         <button onClick={handleShow} className='btn btn-warning ms-3 rounded-circle fw-bolder fs-5'>+</button>
       </div>
+       
+       {/* display all category */}
+       <div className="container-fluid mt-3">
+        {/*  */}
+       </div>
 
 
 
@@ -99,7 +110,7 @@ const Category = ({ setdeleteResponseFromCategory }) => {
           {
             categoryDetails?.allVideos?.length>0 &&
             categoryDetails?.allVideos?.map(videos=>(
-              <div key={videos?.id} className='col-lg-4'>
+              <div draggable={true} onDragStart={e=>CategoryVideoDragStarted(e,videos,categoryDetails)} key={videos?.id} className='col-lg-4'>
                 {/* videocard */}
                 <VideoCard insideCategory={true} displayData={videos}/>
               </div>
